@@ -53,7 +53,7 @@ Important!!!!
 
 .. code-block:: console
 
-    $ sudo chown -R ajlite ~/Envs
+    $ sudo chown -R uname ~/Envs
 
 -------------------
 
@@ -71,7 +71,7 @@ installed.
     $ git clone https://github.com/zenodo/zenodo.git
     $ cd ~/src/zenodo
     $ git checkout master
-     $ docker-compose up -d
+    $ docker-compose up -d
   
 
 Keep the docker-compose session above alive and in a separate shell, create a
@@ -94,10 +94,10 @@ in which we will install Zenodo code and its dependencies:
 
 
 Next, change these versions in /src/zenodo/requirements.txt
-
-psycopg2-binary==2.8.6
---scipy==1.4.1    //if python3.8
-dulwich==0.20.2
+.. code-block:: console
+        psycopg2-binary==2.8.6
+        ##scipy==1.4.1    //if python3.8
+        dulwich==0.20.2
 
 
 Next, install Zenodo and code the dependencies:
