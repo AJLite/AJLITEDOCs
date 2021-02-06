@@ -15,8 +15,11 @@ Docker installation
 
 .. note::
 
-    Change some lines in the Dockerfile, specifically the NodeJS and npm installation:
-        # Node.js
+ Change some lines in the Dockerfile, specifically the NodeJS and npm installation:
+
+.. code-block:: console
+    
+    # Node.js 
     && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get -qy install --fix-missing --no-install-recommends \
       nodejs \
@@ -26,8 +29,7 @@ Docker installation
 
 Python installation
 
-See`Python_Installation
-<https://phoenixnap.com/kb/how-to-install-python-3-ubuntu>`_for details.
+See `here <https://phoenixnap.com/kb/how-to-install-python-3-ubuntu>`_for details.
 
 
 in /bashrc
