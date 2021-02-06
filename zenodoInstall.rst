@@ -2,6 +2,7 @@ Installation
 ============
 
 Zenodo depends on PostgreSQL, Elasticsearch 2.x, Redis and RabbitMQ.
+This is my steps to install and run a local development instance of zenodo on my Ubuntu 20.04 development environment.
 -------------------
 
 Docker installation
@@ -29,21 +30,23 @@ Docker installation
 
 Python installation
 
-See `here <https://phoenixnap.com/kb/how-to-install-python-3-ubuntu>`_for details.
+See `this guide <https://phoenixnap.com/kb/how-to-install-python-3-ubuntu/>`_ for details.
 
 
 in /bashrc
 sudo gedit ~/.bashrc
 
-Insert
+Insert these lines:
 
-#virtualenvwrapper
-export WORKON_HOME=~/Envs
-#export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.8
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /home/ajlite/.local/bin/virtualenvwrapper.sh
-#source /usr/local/bin/virtualenvwrapper.sh
+.. code-block:: console
+
+    #virtualenvwrapper
+    export WORKON_HOME=~/Envs
+    #export WORKON_HOME=$HOME/.virtualenvs
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.8
+    export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+    source /home/ajlite/.local/bin/virtualenvwrapper.sh
+    #source /usr/local/bin/virtualenvwrapper.sh
 
 
 Important!!!!
