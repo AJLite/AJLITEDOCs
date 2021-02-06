@@ -1,0 +1,91 @@
+
+Note: When following this guide, just copy the commands which come after the dollar sign ($)
+
+Step 1: prepare your development environment and I recommend you get a small desktop and then turn it into server by installing Ubuntu 18.04 Desktop version.
+After Installing Ubuntu 18.04, Install docker, docker-compose, and git as illustrated in the Synthetic procedure.
+
+Step 2: Zenodo Development installation
+
+	2.1	$ cd 
+	2.2	$ mkdir src
+	2.3	$ cd ~/src/
+	2.4	$ git clone https://github.com/osct/zenodo.git
+	2.5	$ cd ~/src/zenodo
+	2.6	$ git checkout master
+	2.7	$ sudo docker-compose up -d
+
+The last command above might take a long time becuase it will create the containers and install required packages for the zenodo software. If you get any erros during this, the installation process will abruptly be terminated and you need to solve it. Let me know if you have any erros during this step. 
+
+Note: keep the above shell alive/active and open a new terminal then follow step 3.
+
+Step 3: Create zenodo virtual environment, you can get the link to virtualenvwrapper in the Synthetic procedure. Here are the commands you need to run to install virtualenvwrapper and create zenodo venv:
+		
+	3.1	$ pip install virtualenvwrapper
+	3.2	$ export WORKON_HOME=~/Envs
+	3.3	$ mkdir -p $WORKON_HOME
+	3.4	$ source /usr/local/bin/virtualenvwrapper.sh
+	3.5	$ mkvirtualenv zenodo
+
+		N.B: To switch between virtual environments, use workon command as you indicated in the guide.
+
+Step 4:	Next, install Zenodo and code the dependencies:
+			
+	4.1	$ work on zenodo
+	4.2	(zenodo)$ cd ~/src/zenodo
+	4.3	(zenodo)$ pip install -r requirements.txt --src ~/src/ --pre --upgrade
+	4.4	(zenodo)$ pip install -e .[all,postgresql,elasticsearch2]
+	
+Step 5:	Next, we need to build the media assets for the Zenodo application, To compile Zenodo assets we will need to install: NodeJS 7.4 and NPM 4.0.5. you can install NodeJS, NPM and other dependencies using NVM (node version manager), which is similar to Python’s virtualenv.
+
+To do that, you need to first install NVM as illustrated below:
+
+	5.1	$ sudo apt install curl wget
+	5.2 	$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+	5.3	$ nvm install 7.4
+	5.4	$ nvm use 7.4
+	5.5	Install the npm requirements, this time without sudo:
+
+			5.5.1	(zenodo)$ ./scripts/setup-npm.sh
+			5.5.2	(zenodo)$ ./scripts/setup-assets.sh
+
+
+Step 6:	To run only the essential services using docker, execute the following:
+
+	6.1	$ cd ~/src/zenodo
+	6.2	$ sudo docker-compose up -d
+		
+		NB: Keep this shell session alive. 
+
+Step 7	Now that the services are running, it’s time to initialize the Zenodo database and the Elasticsearch index. Create the database, Elasticsearch indices, messages queues and various fixtures for licenses, grants, communities and users in a new shell session:
+	7.1	$ cd ~/src/zenodo
+	7.2	$ workon zenodo
+	7.3	(zenodo)$ ./scripts/init.sh
+
+Step 8: Let’s also run the Celery worker on a different shell session, so open a new terminal and then run the following commands:
+	8.1	$ cd ~/src/zenodo
+	8.2	$ workon zenodo
+	8.3	(zenodo)$ celery worker -A zenodo.celery -l INFO --purge
+
+Step 9: Next, let’s load some external data (only licenses for the time being). Loading of this demo data is done asynchronusly with Celery, but depends on internet access since it involves 	  harvesting external OAI-PMH or REST APIs.
+
+		Make sure you keep the session with Celery worker alive. Launch the data loading commands in a separate shell:
+	
+	9.1	$ cd ~/src/zenodo
+	9.2	$ workon zenodo
+	9.3	(zenodo)$ zenodo opendefinition loadlicenses -s opendefinition
+	9.4	(zenodo)$ zenodo opendefinition loadlicenses -s spdx
+	9.5	(zenodo)$ ./scripts/index.sh
+
+Step 10: Finally, run the Zenodo development server in debug mode. You can do that by setting up the environment flag:
+
+	10.1	(zenodo)$ export FLASK_DEBUG=True
+	10.2	(zenodo)$ zenodo run
+
+	The installation steps are complete now, go to your browser and visit http://localhost:5000, you should see an instance of Zenodo, 
+similar to the production instance at https://zenodo.org.
+
+
+
+
+
+
