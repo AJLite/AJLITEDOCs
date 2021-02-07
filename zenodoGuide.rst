@@ -62,12 +62,13 @@ installed.
     $ git clone https://github.com/osct/zenodo.git
     $ cd ~/src/zenodo
     $ git checkout master
+    ////see the following notes before the following step
     $ docker-compose up -d
   
  
 .. note::
 
- Before doing the last step .. Change some lines in the Dockerfile which is in ~/src/zenodo directory, specifically the NodeJS and npm installation:
+    Before doing the last step .. Change some lines in the Dockerfile which is in ~/src/zenodo directory:
 
 .. code-block:: console
     
@@ -76,6 +77,12 @@ installed.
     && apt-get -qy install --fix-missing --no-install-recommends \
       nodejs \
     && npm install -g npm@4 \
+
+.. note::
+
+     Before doing the last step .. Change some lines in the reqiurements.txt file which is in ~/src/zenodo directory:
+.. code-block:: console
+    MarkupSafe==1.1.0
 
 Keep the docker-compose session above alive and in a separate shell, create a
 new Python virtual environment using virtualenvwrapper
