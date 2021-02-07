@@ -85,6 +85,7 @@ installed.
 .. code-block:: 
 
     MarkupSafe==1.1.0
+    maxminddb==1.5.2
 
 
 ---------------------------------------
