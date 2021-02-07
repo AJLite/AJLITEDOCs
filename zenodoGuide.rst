@@ -82,7 +82,8 @@ installed.
 
      Before doing the last step .. Change some lines in the reqiurements.txt file which is in ~/src/zenodo directory:
      
-.. code-block:: console
+.. code-block:: 
+
     MarkupSafe==1.1.0
 
 
