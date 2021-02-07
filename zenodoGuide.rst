@@ -81,8 +81,12 @@ installed.
 .. note::
 
      Before doing the last step .. Change some lines in the reqiurements.txt file which is in ~/src/zenodo directory:
+     
 .. code-block:: console
     MarkupSafe==1.1.0
+
+
+---------------------------------------
 
 Keep the docker-compose session above alive and in a separate shell, create a
 new Python virtual environment using virtualenvwrapper
