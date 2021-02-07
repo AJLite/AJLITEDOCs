@@ -15,17 +15,7 @@ Docker installation
     $ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
     $ docker-compose --version
 
-.. note::
 
- Change some lines in the Dockerfile, specifically the NodeJS and npm installation:
-
-.. code-block:: console
-    
-    # Node.js 
-    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    && apt-get -qy install --fix-missing --no-install-recommends \
-      nodejs \
-    && npm install -g npm@4 \
 
 --------------------
 
@@ -74,6 +64,17 @@ installed.
     $ git checkout master
     $ docker-compose up -d
   
+  .. note::
+
+ Before doing the last step .. Change some lines in the Dockerfile which is in ~/src/zenodo directory, specifically the NodeJS and npm installation:
+
+.. code-block:: console
+    
+    # Node.js 
+    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && apt-get -qy install --fix-missing --no-install-recommends \
+      nodejs \
+    && npm install -g npm@4 \
 
 Keep the docker-compose session above alive and in a separate shell, create a
 new Python virtual environment using virtualenvwrapper
