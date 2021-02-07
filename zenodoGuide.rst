@@ -3,7 +3,8 @@ Installation
 
 Zenodo depends on PostgreSQL, Elasticsearch 2.x, Redis and RabbitMQ.
 This is my steps to install and run a local development instance of zenodo on my Ubuntu 20.04 development environment.
--------------------
+
+----------------------
 
 Docker installation
 
