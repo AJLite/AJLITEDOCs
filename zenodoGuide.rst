@@ -68,7 +68,7 @@ installed.
 .. code-block:: console
 
     $ cd ~/src/
-    $ git clone https://github.com/zenodo/zenodo.git
+    $ git clone https://github.com/osct/zenodo.git
     $ cd ~/src/zenodo
     $ git checkout master
     $ docker-compose up -d
