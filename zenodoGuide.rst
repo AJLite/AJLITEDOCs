@@ -64,7 +64,8 @@ installed.
     $ git checkout master
     $ docker-compose up -d
   
-  .. note::
+ 
+.. note::
 
  Before doing the last step .. Change some lines in the Dockerfile which is in ~/src/zenodo directory, specifically the NodeJS and npm installation:
 
