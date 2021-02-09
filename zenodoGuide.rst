@@ -122,6 +122,7 @@ Next, install Zenodo and code the dependencies:
 
     (ajlite)$ cd ~/src/zenodo
     (ajlite)$ sudo apt-get install build-essential python-dev
+    /////the same as version of python of the environment
     (ajlite)$ sudo apt install libffi-dev
     (ajlite)$ pip install cffi==1.12.3
     (ajlite)$ pip install pyOpenSSL
