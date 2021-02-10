@@ -63,6 +63,8 @@ installed.
     $ cd ~/src/zenodo
     $ git checkout master
     ////see the following notes before the following step
+    //nvm use v10.19.0
+    //npm install npm@latest -g
     $ docker-compose up -d
   
  
@@ -100,7 +102,7 @@ in which we will install Zenodo code and its dependencies:
     Zenodo works on both on Python 2.7 and 3.5+. However in case you need to
     use the XRootD storage interface, you will need Python 2.7 as the
     underlying libraries don't support Python 3.5+ yet.
-    I will use python 2.7
+    I will use python 2.7 // for infn use 3.5
     
     
 .. code-block:: console
